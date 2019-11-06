@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Box, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import VoteCpt from '../Component/VoteCpt/VoteCpt';
+import CreateCpt from '../Component/CreateCpt/CreateCpt';
 
 const styles = (theme) => ({
   root: {
+    minHeight: '100vh',
     backgroundColor: '#282c34',
   },
   bottomNaviStyle: {
-    bottom: 0,
-    position: 'absolute',
     width:'100%',
   }
 });
@@ -20,7 +20,6 @@ class Layout extends Component {
 
     return (
       <Box className = {classes.root}>
-        <VoteCpt />
         <BottomNavigation
           className = {classes.bottomNaviStyle}
           showLabels
@@ -29,6 +28,7 @@ class Layout extends Component {
           <BottomNavigationAction label="투표" />
           <BottomNavigationAction label="등록" />
         </BottomNavigation>
+        <CreateCpt />
       </Box>
     );
   }

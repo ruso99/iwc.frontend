@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import PictureStore from './Store/addPictureStore';
+import addStore from './Store/addStore';
 import { Provider } from 'mobx-react';
 
-const addPicture = new PictureStore();
+const addPictureStore = new addStore();
+console.log(addPictureStore);
 
 ReactDOM.render(
-  <Provider pictureStore={addPicture}>
+  <Provider addStore={addPictureStore}>
     <App />
   </Provider>,
   document.getElementById('root')

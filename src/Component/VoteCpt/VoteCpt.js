@@ -5,7 +5,7 @@ import { Box, Grid, Paper } from '@material-ui/core';
 const styles = (theme) => ({
   root: {
     position: 'absolute',
-    backgroundColor: '#282c34',
+    backgroundColor: '#8C4AF1',
     height: 'calc( 100% - 56px )',
   },
   spaceTop: {

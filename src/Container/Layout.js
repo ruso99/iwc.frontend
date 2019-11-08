@@ -7,7 +7,7 @@ import CreateCpt from '../Component/CreateCpt/CreateCpt';
 const styles = (theme) => ({
   root: {
     minHeight: '100vh',
-    backgroundColor: '#282c34',
+    backgroundColor: '#8C4AF1',
   },
   bottomNaviStyle: {
     width:'100%',

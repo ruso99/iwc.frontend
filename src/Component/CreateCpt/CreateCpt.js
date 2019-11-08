@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Box, Grid, Paper } from '@material-ui/core';
-import AddPictureCpt from './PictureCpt/Before/AddBeforePictureCpt';
+import { Box, Grid, Paper, Button } from '@material-ui/core';
+import AddPictureCpt from './PictureCpt/AddPictureCpt';
+import DescriptionCpt from './DescriptionCpt/DescriptionCpt';
+import CheckGuideDialog from './Dialog/CheckGuideDialog';
 
 const styles = (theme) => ({
   root: {
-    backgroundColor: '#282c34',
+    backgroundColor: '#8C4AF1',
     height: '100%',
     width: '100%',
   },
@@ -23,16 +25,24 @@ const styles = (theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  contentStyle: {
-    width: '95vw',
-    height: '60vw',
-  },
   addMobStyle: {
     width: '320px',
     height: '50px',
   },
-  displayStyle: {
-    height: '100px'
+  buttonStyle: {
+    width: '100%',
+    height: '50px',
+    backgroundColor: '#FFFFFF',
+    '&:hover': {
+      backgroundColor: '#FFFFFF',
+      borderColor: '#0062cc',
+      boxShadow: 'none',
+    },
+    '&:active': {
+      boxShadow: 'none',
+      backgroundColor: '#EAEAEA',
+      borderColor: '#005cbf',
+    },
   },
   footerStyle: {
     height: '56px'
@@ -40,6 +50,23 @@ const styles = (theme) => ({
 });
 
 class CreateCpt extends Component {
+
+  state = {
+    checkDialogState: false,
+  }
+
+  openDialog = () => {
+    this.setState({
+      checkDialogState: true,
+    });
+  }
+
+  closeDialog = () => {
+    this.setState({
+      checkDialogState: false,
+    });
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -64,13 +91,24 @@ class CreateCpt extends Component {
             item xs={12}
             className={classes.gridSpacing}
           >
-            <Paper className = {classes.contentStyle}>설명입력</Paper>
+            <DescriptionCpt />
           </Grid>
           <Grid
             item xs={12}
             className={classes.gridSpacing}
           >
-            <Paper className={classes.displayStyle}>등록하기</Paper>
+            <Button
+              variant="contained"
+              color="inherit"
+              onClick={this.openDialog}
+              className={classes.buttonStyle}
+            >
+              등록하기
+            </Button>
+            <CheckGuideDialog 
+              open={this.state.checkDialogState}
+              onClose={this.closeDialog}
+            />
           </Grid>
         </Grid>
       </Box>

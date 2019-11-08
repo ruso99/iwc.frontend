@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import AddBeforePictureCpt from './Before/AddBeforePictureCpt';
 import AddAfterPictureCpt from './After/AddAfterPictureCpt';
-import { inject } from 'mobx-react';
 
 class AddPictureCpt extends Component {
   state = {
@@ -19,8 +19,8 @@ class AddPictureCpt extends Component {
       <div>
         {
           this.state.inputState ?
-            <AddBeforePictureCpt handleStateChange = {this.handleStateChange}/> :
-            <AddAfterPictureCpt />
+            <AddAfterPictureCpt /> :
+            <AddBeforePictureCpt handleStateChange = {this.handleStateChange} /> 
         }
       </div>
     );

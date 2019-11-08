@@ -1,8 +1,9 @@
 import { observable, action } from 'mobx';
 
-export default class PictureStore {
+export default class addStore {
   @observable number = 0;
-  @observable selectedFile = null;
+  @observable illustFile = null;
+  @observable descriptionInput = '';
 
   @action increase = () => {
     this.number++;

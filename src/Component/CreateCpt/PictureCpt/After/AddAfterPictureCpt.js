@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { inject } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
+import { autorun } from 'mobx';
 
 const styles = (theme) => ({
   root: {
@@ -8,16 +9,29 @@ const styles = (theme) => ({
     width: '100%',
     paddingTop: '50%',
   },
+  imgStyle: {
+    height: '60vw',
+    width: 'auto',
+  }
 });
 
-inject('pictureStore')
+@inject('addStore')
+@observer
 class AddAfterPictureCpt extends Component {
+
+  previewImage = (img) => {
+    return URL.createObjectURL(img);
+  }
+
   render() {
-    const { classes } = this.props;
+    const { classes, addStore } = this.props;
 
     return (
       <div>
-        
+        <img
+          className={classes.imgStyle}
+          src={this.previewImage(addStore.illustFile)}
+        />
       </div>
     );
   }

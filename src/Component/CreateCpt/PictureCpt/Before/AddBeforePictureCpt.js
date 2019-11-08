@@ -1,29 +1,23 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Button, Typography } from '@material-ui/core';
-import { inject } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 
 const styles = (theme) => ({
   root: {
     height: '100%',
     width: '100%',
-    paddingTop: '50%',
   },
 });
 
-inject('pictureStore')
+@inject('addStore')
+@observer
 class AddBeforePictureCpt extends Component {
 
-  state = {
-    selectedFile: null,
-  }
-
-  handleFileInput = async (e) => {
-    this.setState({
-      selectedFile: e.target.files[0],
-    })
+  handleFileInput = (e) => {
+    this.props.addStore.illustFile = e.target.files[0];
     this.props.handleStateChange();
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -46,7 +40,7 @@ class AddBeforePictureCpt extends Component {
               display="block"
               variant="overline"
             >
-              등록하기
+              Upload
             </Typography>
             <input
               type="file"
